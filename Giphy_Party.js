@@ -13,6 +13,7 @@ function addImage(res) {
     let $newImage = $("<img>", {
       src: res.data[randomIdx].image.original.url,
     });
+   // in solution, it created a new div here so we append new img to div and then imageArea, but why?
     $imageArea.append($newImage);
   }
 }
@@ -22,6 +23,7 @@ $("form").on("submit", async function (evt) {
   evt.preventDefault();
   let searchTerm = $searchInput.val();
   $searchInput.val("");
+// why is this line a thing, I tried without it 
   const response = await axios.get("http://api.giphy.com/v1/gifs/search", {
     params: {
       q: searchTerm,
