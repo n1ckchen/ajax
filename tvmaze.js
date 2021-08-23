@@ -47,6 +47,7 @@ function populateShows(shows) {
   $showsList.empty();
 
   for (let show of shows) {
+    show = show[0];
     let $item = $(
       `<div class="col-md-6 col-lg-3 Show" data-show-id="${show.id}">
          <div class="card" data-show-id="${show.id}">
@@ -123,6 +124,8 @@ $("#shows-list").on(
     evt.preventDefault();
     let showId = $(evt.target).closest(".Show").data("show-id");
     let episodes = await getEpisodes(showId);
+    console.log(showId);
+    console.log(episodes);
     populateEpisodes(episodes);
   }
 );
